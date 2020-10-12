@@ -1,0 +1,24 @@
+[package]
+name = "tikv-example"
+version = "0.1.0"
+authors = ["Pramod Biligiri <pramodbiligiri@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+#tikv-client = { git = "https://github.com/tikv/client-rust.git" }
+tikv-client = { path = "../client-rust/" }
+#tokio = "0.2.0-alpha.4"
+tokio = { version = "0.2.0-alpha.4", features = ["full"] }
+
+[patch.crates-io]
+raft-proto = { git = "https://github.com/tikv/raft-rs", rev = "e624c1d48460940a40d8aa69b5329460d9af87dd" }
+
+[patch.'https://github.com/pingcap/kvproto.git']
+# We need a different version of kvproto, but Cargo won't let you "patch" just the rev if
+# the URL is the same. Hence pointing to a forked version.
+kvproto = { git = "https://github.com/pramodbiligiri/kvproto", rev="c0e3a4d8bbece2b8d796ed5a08649ea5223b7abf" }
+
+[net]
+git-fetch-with-cli = true

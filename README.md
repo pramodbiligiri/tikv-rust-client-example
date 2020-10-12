@@ -29,7 +29,7 @@ Build the docker image
 If this is the first time you are running this project, build the docker image:  
 $ mkdir client-rust  
 $ sudo mount --bind ../client-rust client-rust # Or su as root and do the same  
-$ ./build-docker-image.sh 
+$ ./build-docker-image.sh  
 $ docker image ls # Output should include the bitken/tikv-example image
 
 How to run
